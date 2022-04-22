@@ -6,7 +6,9 @@ Command-line RSS reader utility implemented in Python
 
 ## Installation
 
-Run: ```pip install requirements.txt```
+``` 
+$ pip install -r requirements.txt
+```
 
 ## Interface
 
