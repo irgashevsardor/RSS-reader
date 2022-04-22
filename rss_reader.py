@@ -3,9 +3,9 @@
 import logging
 from logging.config import fileConfig
 
-from parser.arg_parser import handle_args
 from content_aggregator import rss_aggregator
 from converters.converter import to_json
+from parser.arg_parser import handle_args
 
 fileConfig('log_config.ini')
 

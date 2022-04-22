@@ -1,8 +1,7 @@
 """The module provides necessary functions to parse and handle command-line arguments"""
 
-import sys
 import logging
-
+import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 
 from _version import __version__

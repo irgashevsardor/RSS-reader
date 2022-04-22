@@ -1,7 +1,7 @@
 """The module provides necessary functions to aggregate RSS content"""
 
-import sys
 import logging
+import sys
 from itertools import islice
 from typing import Optional, List, Union
 
