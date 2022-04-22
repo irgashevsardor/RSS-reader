@@ -3,12 +3,12 @@
 import json
 import logging
 from itertools import islice
+from typing import Union, List, Optional
 
-# Initialize logger
 logger = logging.getLogger()
 
 
-def to_json(parsed_content, content_limit=None):
+def to_json(parsed_content: List[Union[str, dict]], content_limit: Optional[int] = None) -> str:
     """Converts list containing dictionary elements to JSON
 
     Args:
@@ -20,7 +20,7 @@ def to_json(parsed_content, content_limit=None):
     """
     logger.debug('Serializing to JSON...')
     json_list = []
-    if content_limit > 0:
+    if content_limit is not None and content_limit > 0:
         content_limit += 1
     for item in islice(parsed_content, 1, content_limit):
         json_item = {

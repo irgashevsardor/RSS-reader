@@ -9,7 +9,6 @@ from parser.arg_parser import handle_args
 
 fileConfig('log_config.ini')
 
-# Initialize logger
 logger = logging.getLogger()
 logger.disabled = True
 

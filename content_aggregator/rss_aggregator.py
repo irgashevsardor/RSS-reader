@@ -8,7 +8,6 @@ from typing import Optional, List, Union
 import requests
 from bs4 import BeautifulSoup
 
-# Initialize logger
 logger = logging.getLogger()
 
 
@@ -34,7 +33,14 @@ def fetch_rss_content(url: str) -> requests.Response:
     except requests.exceptions.HTTPError:
         logger.error('HTTP Error Occurred. Program Terminated. Try Again.')
         sys.exit()
+    except requests.exceptions.Timeout:
+        logger.error('The Request Timed Out. Program Terminated. Try Again.')
+        sys.exit()
+    except requests.exceptions.RequestException:
+        logger.error('Ambiguous Exception. Program Terminated. Try Again.')
+        sys.exit()
     logger.debug('Response arrived!')
+
     return response
 
 
@@ -75,7 +81,7 @@ def print_rss_content(parsed_content: List[Union[str, dict]], content_limit: Opt
         None
     """
     print(f"\nFeed: {parsed_content[0]}\n")
-    if content_limit > 0:
+    if content_limit is not None and content_limit > 0:
         content_limit += 1
     for item in islice(parsed_content, 1, content_limit):
         print(f"Title: {item['title']}")

@@ -6,7 +6,6 @@ from argparse import ArgumentParser, ArgumentTypeError, Namespace
 
 from _version import __version__
 
-# Initialize logger
 logger = logging.getLogger()
 
 
