@@ -23,7 +23,7 @@ def positive_int(value: str) -> int:
     """
     try:
         int_val = int(value)
-        if int_val < 0:
+        if int_val <= 0:
             raise ArgumentTypeError('Limit can take positive integer value only! Program terminated. Try again.')
         return int_val
     except (ValueError, TypeError):

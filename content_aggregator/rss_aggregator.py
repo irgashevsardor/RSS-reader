@@ -2,7 +2,6 @@
 
 import logging
 import sys
-from itertools import islice
 from typing import Optional, List, Union
 
 import requests
@@ -40,14 +39,15 @@ def fetch_rss_content(url: str) -> requests.Response:
         logger.error('Ambiguous Exception. Program Terminated. Try Again.')
         sys.exit()
     logger.debug('Response arrived!')
-
     return response
 
 
-def parse_rss_content(fetched_content: requests.Response) -> List[Union[str, dict]]:
+def parse_rss_content(fetched_content: requests.Response, content_limit: Optional[int] = None) -> List[
+    Union[str, dict]]:
     """Parses the XML contents of the Response object
 
     Args:
+        content_limit: Limit of the feeds
         fetched_content: The Response object, which contains a server’s response to an HTTP request.
 
     Returns:
@@ -56,7 +56,7 @@ def parse_rss_content(fetched_content: requests.Response) -> List[Union[str, dic
     logger.debug('Parsing fetched content...')
     soup = BeautifulSoup(fetched_content.text, 'xml')
     feed = soup.channel.title.text
-    articles = soup.find_all('item')
+    articles = soup.find_all('item', limit=content_limit)
     news_items = [feed]
     for article in articles:
         news_item = {
@@ -70,20 +70,17 @@ def parse_rss_content(fetched_content: requests.Response) -> List[Union[str, dic
     return news_items
 
 
-def print_rss_content(parsed_content: List[Union[str, dict]], content_limit: Optional[int] = None) -> None:
+def print_rss_content(parsed_content: List[Union[str, dict]]) -> None:
     """Prints the contents of the parsed feed-containing XML
 
     Args:
         parsed_content: List containing the parsed feed source and the parsed news items
-        content_limit: Limit of the feeds
 
     Returns:
         None
     """
     print(f"\nFeed: {parsed_content[0]}\n")
-    if content_limit is not None and content_limit > 0:
-        content_limit += 1
-    for item in islice(parsed_content, 1, content_limit):
+    for item in parsed_content[1:]:
         print(f"Title: {item['title']}")
         print(f"Date Published: {item['pub_date']}")
         print(f"Description: {item['description']}")

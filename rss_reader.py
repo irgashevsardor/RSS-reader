@@ -24,11 +24,11 @@ def main() -> None:
         logger.disabled = False
     logger.debug('Program started.')
     content = rss_aggregator.fetch_rss_content(parser.source)
-    parsed_rss = rss_aggregator.parse_rss_content(content)
+    parsed_rss = rss_aggregator.parse_rss_content(content, parser.limit)
     if parser.json:
         print(to_json(parsed_rss, parser.limit))
     else:
-        rss_aggregator.print_rss_content(parsed_rss, parser.limit)
+        rss_aggregator.print_rss_content(parsed_rss)
 
 
 if __name__ == '__main__':
