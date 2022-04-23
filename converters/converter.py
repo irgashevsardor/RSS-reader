@@ -2,27 +2,23 @@
 
 import json
 import logging
-from itertools import islice
-from typing import Union, List, Optional
+from typing import Union, List
 
 logger = logging.getLogger()
 
 
-def to_json(parsed_content: List[Union[str, dict]], content_limit: Optional[int] = None) -> str:
+def to_json(parsed_content: List[Union[str, dict]]) -> str:
     """Converts list containing dictionary elements to JSON
 
     Args:
         parsed_content: List containing the parsed feed source and the parsed news items
-        content_limit: Limit of the feeds
 
     Returns:
         JSON formatted string of serialized (converted) objects
     """
     logger.debug('Serializing to JSON...')
     json_list = []
-    if content_limit is not None and content_limit > 0:
-        content_limit += 1
-    for item in islice(parsed_content, 1, content_limit):
+    for item in parsed_content[1:]:
         json_item = {
             'Feed Source': parsed_content[0],
             'News Item': {

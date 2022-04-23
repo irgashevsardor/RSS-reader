@@ -27,8 +27,7 @@ def positive_int(value: str) -> int:
             raise ArgumentTypeError('Limit can take positive integer value only! Program terminated. Try again.')
         return int_val
     except (ValueError, TypeError):
-        logger.error('Limit can take integer value only! Program terminated. Try again.')
-        sys.exit()
+        sys.exit('Limit can take integer value only! Program terminated. Try again.')
 
 
 def handle_args() -> Namespace:
