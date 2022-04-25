@@ -6,9 +6,14 @@ Command-line RSS reader utility implemented in Python
 
 ## Installation
 
-``` 
-$ pip install -r requirements.txt
-```
+### 1. Install from PyPI repository
+
+Run ```pip install rss-reader-sardor-irgashev```
+
+### 2. Clone from GitLab
+
+1. Clone the repository
+2. Install necessary requirements by running ```pip install -r requirements.txt```
 
 ## Interface
 
@@ -51,6 +56,42 @@ Link: https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-
 
 ```
 > python3 rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
+```
+
+```shell
+[
+    {
+        "Feed Source": "CNN.com - RSS Channel - World",
+        "News Item": {
+            "Title": "His house was demolished because he is Muslim, he says",
+            "Publication Date": "Thu, 21 Apr 2022 05:36:32 GMT",
+            "Description": "Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.",
+            "Link": "https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html"
+        }
+    }
+]
+```
+
+#### Alternatives with installation from PyPi
+
+```
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1`
+```
+
+```shell
+Feed: CNN.com - RSS Channel - World
+
+Title: His house was demolished because he is Muslim, he says
+Date Published: Thu, 21 Apr 2022 05:36:32 GMT
+Description: Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.
+Link: https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html
+
+====================================================================================
+
+```
+
+```
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
 ```
 
 ```shell
