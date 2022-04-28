@@ -1,5 +1,6 @@
 *.egg-info
-db.sqlite3
+*.db
+*.db-journal
 .idea/
 .vscode/
 __pycache__/

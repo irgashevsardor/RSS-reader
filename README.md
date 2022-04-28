@@ -34,6 +34,7 @@ optional arguments:
   --json         Print result as JSON in stdout
   --verbose      Outputs verbose status messages
   --limit LIMIT  Limit news topics if this parameter provided
+  --date DATE    News publishing date
 ```
 
 ## Usage Examples
@@ -43,15 +44,15 @@ optional arguments:
 ```
 
 ```shell
-Feed: CNN.com - RSS Channel - World
+    Feed Title: CNN.com - RSS Channel - World
 
-Title: His house was demolished because he is Muslim, he says
-Date Published: Thu, 21 Apr 2022 05:36:32 GMT
-Description: Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.
-Link: https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
 
-====================================================================================
-
+    ====================================================================================
 ```
 
 ```
@@ -59,53 +60,201 @@ Link: https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-
 ```
 
 ```shell
-[
-    {
-        "Feed Source": "CNN.com - RSS Channel - World",
-        "News Item": {
-            "Title": "His house was demolished because he is Muslim, he says",
-            "Publication Date": "Thu, 21 Apr 2022 05:36:32 GMT",
-            "Description": "Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.",
-            "Link": "https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html"
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
         }
-    }
-]
+    ]
+```
+
+```
+> python3 rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1
+```
+
+```shell
+    Feed Title: CNN.com - RSS Channel - World
+
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
+
+    ====================================================================================
+```
+
+```
+>  python3 rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1 --json
+```
+
+```shell
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
+        }
+    ]
+```
+
+```
+> python3 rss_reader.py --date 20220428 --limit 1
+```
+
+```shell
+    Feed Title: CNN.com - RSS Channel - World
+
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
+
+    ====================================================================================
+```
+
+```
+> python3 rss_reader.py --date 20220428 --json --limit 1
+```
+
+```shell
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
+        }
+    ]
 ```
 
 #### Alternatives with installation from PyPi
 
 ```
-> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1`
+> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1
 ```
 
 ```shell
-Feed: CNN.com - RSS Channel - World
+    Feed Title: CNN.com - RSS Channel - World
 
-Title: His house was demolished because he is Muslim, he says
-Date Published: Thu, 21 Apr 2022 05:36:32 GMT
-Description: Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.
-Link: https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
 
-====================================================================================
-
+    ====================================================================================
 ```
 
 ```
-> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
+> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
 ```
 
 ```shell
-[
-    {
-        "Feed Source": "CNN.com - RSS Channel - World",
-        "News Item": {
-            "Title": "His house was demolished because he is Muslim, he says",
-            "Publication Date": "Thu, 21 Apr 2022 05:36:32 GMT",
-            "Description": "Shahdullah Baig stands among the rubble of what was once his modest two-bedroom home, his belongings buried under debris and broken bricks.",
-            "Link": "https://www.cnn.com/2022/04/21/india/india-hindu-muslim-violence-khargone-bulldozing-intl-hnk-dst/index.html"
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
         }
-    }
-]
+    ]
+```
+
+```
+> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1
+```
+
+```shell
+    Feed Title: CNN.com - RSS Channel - World
+
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
+
+    ====================================================================================
+```
+
+```
+> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1 --json
+```
+
+```shell
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
+        }
+    ]
+```
+
+```
+> rss_reader.py --date 20220428 --limit 1
+```
+
+```shell
+    Feed Title: CNN.com - RSS Channel - World
+
+    News Title: China's Weibo shows user locations to combat 'bad behavior'
+    Date Published: Thu, 28 Apr 2022 15:55:04 GMT
+    Description: Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat "bad behavior" online.
+    Link: https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html
+    Image: https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg
+
+    ====================================================================================
+```
+
+```
+> rss_reader.py --date 20220428 --json --limit 1
+```
+
+```shell
+    [
+        {
+            "Feed Title": "CNN.com - RSS Channel - World",
+            "Feed Source": "http://rss.cnn.com/rss/edition_world.rss",
+            "News Item": {
+                "News Title": "China's Weibo shows user locations to combat 'bad behavior'",
+                "Publication Date": "Thu, 28 Apr 2022 15:55:04 GMT",
+                "Description": "Weibo, China's equivalent of Twitter, told users on Thursday it would start to publish their IP locations on their account pages and when they post comments, in a bid to combat \"bad behavior\" online.",
+                "Link": "https://www.cnn.com/2022/04/28/tech/weibo-user-location-bad-behavior/index.html",
+                "Image Link": "https://cdn.cnn.com/cnnnext/dam/assets/220428104403-weibo-app-china-file-restricted-super-169.jpg"
+            }
+        }
+    ]
 ```
 
 ## Feed Sources
