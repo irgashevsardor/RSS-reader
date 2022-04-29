@@ -35,7 +35,11 @@ optional arguments:
   --verbose      Outputs verbose status messages
   --limit LIMIT  Limit news topics if this parameter provided
   --date DATE    News publishing date
+  --to-html HTML Convert news to HTML
+  --to-pdf PDF   Convert news to PDF
 ```
+
+!!! PDF file generation may take little time
 
 ## Usage Examples
 
@@ -147,7 +151,15 @@ optional arguments:
     ]
 ```
 
-#### Alternatives with installation from PyPi
+```
+> python3 rss_reader.py https://moxie.foxnews.com/feedburner/latest.xml --to-pdf ./ --to-html ./
+```
+
+```shell
+Creates both HTML and PDF files at the specified location
+```
+
+#### Alternatives with installation from PyPI
 
 ```
 > rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1
@@ -255,6 +267,14 @@ optional arguments:
             }
         }
     ]
+```
+
+```
+> python3 rss_reader.py https://moxie.foxnews.com/feedburner/latest.xml --to-pdf ./ --to-html ./
+```
+
+```shell
+Creates both HTML and PDF files at the specified location
 ```
 
 ## Feed Sources

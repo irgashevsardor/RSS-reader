@@ -32,7 +32,7 @@ class DatabaseManager:
         self._columns = ', '.join(self._table_columns)
         self._placeholders = ':' + ', :'.join(self._table_columns)
         self._unique = unique_constraint
-        logger.debug(f'Connected to DB {self._table_name}')
+        logger.debug(f'Connected to DB.')
 
     def _create_table(self) -> None:
         """Creates table in database
@@ -71,7 +71,8 @@ class DatabaseManager:
         if date is not None:
             pub_date = datetime.strptime(date, '%Y%m%d').strftime('%a, %d %b %Y') + '%'
             if source != '':
-                query = f"SELECT * FROM {self._table_name} WHERE feed_url=:source and publication_date like :publication_date"
+                query = f"""
+                SELECT * FROM {self._table_name} WHERE feed_url=:source and publication_date like :publication_date"""
                 self._cursor.execute(query, {'publication_date': pub_date, 'source': source})
                 logger.debug('Query performed to fetch rows according to source and publishing date.')
             else:
@@ -85,7 +86,7 @@ class DatabaseManager:
         else:
             sys.exit("Neither source nor date provided to perform query. Program terminated. Try again.")
 
-    def retrieve_from_db(self, date, source, limit) -> List[tuple]:
+    def retrieve_from_db(self, date: str, source: str, limit: int) -> List[tuple]:
         """Retrieves records from database according to arguments specified
 
         Args:

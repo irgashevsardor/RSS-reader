@@ -1,10 +1,7 @@
-"""The module provides a function of conversion from dictionary to JSON"""
+"""The module provides implementation for outputting news to console"""
 
 import json
-from logging import getLogger
 from typing import List
-
-logger = getLogger()
 
 
 def to_json(content: List[tuple]) -> str:
@@ -16,7 +13,6 @@ def to_json(content: List[tuple]) -> str:
     Returns:
         JSON formatted string of serialized (converted) objects
     """
-    logger.debug('Serializing to JSON...')
     json_list = []
     for item in content:
         json_item = {
@@ -31,11 +27,10 @@ def to_json(content: List[tuple]) -> str:
             }
         }
         json_list.append(json_item)
-    logger.debug('Serialization complete!')
     return json.dumps(json_list, indent=4)
 
 
-def output_to_console(content: List[tuple]) -> None:
+def to_console(content: List[tuple]) -> None:
     """Outputs the contents of the parsed feed-containing XML
 
     Args:

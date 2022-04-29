@@ -1,6 +1,8 @@
 *.egg-info
 *.db
 *.db-journal
+*.html
+*.pdf
 .idea/
 .vscode/
 __pycache__/

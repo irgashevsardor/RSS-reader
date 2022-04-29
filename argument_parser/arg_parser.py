@@ -1,13 +1,14 @@
-"""The module provides necessary functions to parse and handle command-line arguments"""
+"""The module provides implementation for parsing and handling command-line arguments"""
 
-import logging
+import os
 import sys
 from argparse import ArgumentParser, ArgumentTypeError, Namespace
 from datetime import datetime
+from logging import getLogger
 
 from _version import __version__
 
-logger = logging.getLogger()
+logger = getLogger()
 
 
 def positive_int(value: str) -> int:
@@ -34,10 +35,10 @@ def positive_int(value: str) -> int:
 def valid_date(date: str) -> str:
     """Checks whether the provided argument is a valid date
     Args:
-        date: Command-line-provided argument
+        date: Command-line-provided argument for date
 
     Returns:
-        str corresponding to 'date', parsed according to format provided
+        String represented 'date', parsed according to format provided
 
     Raises:
         ArgumentTypeError: If provided 'date' and format cannot be parsed
@@ -46,6 +47,24 @@ def valid_date(date: str) -> str:
         return datetime.strptime(date, "%Y%m%d").strftime("%Y%m%d")
     except ValueError:
         raise ArgumentTypeError('Argument is outside of defined ranges. Program terminated. Try again.')
+
+
+def valid_path(path: str) -> str:
+    """Checks whether the provided argument is a valid path
+
+    Args:
+        path: Command-line-provided argument for path
+
+    Returns:
+        String represented path
+
+    Raises:
+        NotADirectoryError: If provided 'path' is not a directory
+    """
+    if os.path.dirname(path):
+        return path
+    else:
+        raise NotADirectoryError(f"{path} is not a directory. Program terminated. Try again.")
 
 
 def handle_args() -> Namespace:
@@ -62,5 +81,7 @@ def handle_args() -> Namespace:
     parser.add_argument('--verbose', action='store_true', help='Outputs verbose status messages')
     parser.add_argument('--limit', type=positive_int, help='Limit news topics if this parameter provided')
     parser.add_argument('--date', type=valid_date, help='News publishing date')
+    parser.add_argument('--to-html', type=valid_path, dest='html', help='Convert news to HTML')
+    parser.add_argument('--to-pdf', type=valid_path, dest='pdf', help='Convert news to PDF')
 
     return parser.parse_args()

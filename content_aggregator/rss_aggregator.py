@@ -12,7 +12,7 @@ from db_manager.manager import DatabaseManager
 logger = getLogger()
 
 
-class RSSContent:
+class RSSAggregator:
     """Represents RSS content aggregation"""
 
     def __init__(self, url: str, content_pub_date: Optional[str] = None, content_limit: Optional[int] = None) -> None:
