@@ -45,24 +45,9 @@ class RSSAggregator:
         try:
             response = requests.get(self.url, headers=headers)
             response.raise_for_status()
-        except requests.exceptions.ConnectionError:
-            logger.error('Connection Error Occurred. Program Terminated. Try Again.')
-            sys.exit()
-        except requests.exceptions.HTTPError:
-            logger.error('HTTP Error Occurred. Program Terminated. Try Again.')
-            sys.exit()
-        except requests.exceptions.URLRequired:
-            logger.error('A valid URL is required to make a request. Program Terminated. Try Again.')
-            sys.exit()
-        except requests.exceptions.TooManyRedirects:
-            logger.error('Too many redirects. Program Terminated. Try Again.')
-            sys.exit()
-        except requests.exceptions.Timeout:
-            logger.error('The Request Timed Out. Program Terminated. Try Again.')
-            sys.exit()
         except requests.exceptions.RequestException:
-            logger.error('Ambiguous Exception. Program Terminated. Try Again.')
-            sys.exit()
+            logger.error(f'Ambiguous exception while making request to {self.url}')
+            sys.exit('Error occurred while making request. Program terminated. Try again.')
         self._response_object = response
         logger.debug('Response arrived.')
 
