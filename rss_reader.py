@@ -38,8 +38,8 @@ def main() -> None:
 
     if parser.json:
         print(console_output.to_json(retrieved_rss_content))
-    elif parser.pdf is None and parser.html is None:
-        console_output.to_console(retrieved_rss_content)
+    elif parser.pdf is None and parser.html is None or parser.colorize:
+        console_output.to_console(retrieved_rss_content, colorize=parser.colorize)
 
 
 if __name__ == '__main__':

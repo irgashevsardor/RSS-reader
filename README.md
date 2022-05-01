@@ -37,6 +37,7 @@ optional arguments:
   --date DATE    News publishing date
   --to-html HTML Convert news to HTML
   --to-pdf PDF   Convert news to PDF
+  --colorize     Enables colorized output
 ```
 
 ## Usage Examples

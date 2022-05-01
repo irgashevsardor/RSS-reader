@@ -83,5 +83,6 @@ def handle_args() -> Namespace:
     parser.add_argument('--date', type=valid_date, help='News publishing date')
     parser.add_argument('--to-html', type=valid_path, dest='html', help='Convert news to HTML')
     parser.add_argument('--to-pdf', type=valid_path, dest='pdf', help='Convert news to PDF')
+    parser.add_argument('--colorize', action='store_true', help='Enables colorized output')
 
     return parser.parse_args()
