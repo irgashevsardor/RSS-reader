@@ -280,9 +280,7 @@ Creates both HTML and PDF files at the specified location
 ## Feed Sources
 
 1. https://moxie.foxnews.com/feedburner/latest.xml
-2. https://rss.nytimes.com/services/xml/rss/nyt/World.xml
-3. http://feeds.bbci.co.uk/news/world/rss.xml
-4. http://rss.cnn.com/rss/edition_world.rss
-5. https://feeds.washingtonpost.com/rss/world?itid=lk_inline_manual_41
-
-
+2. https://www.scmp.com/rss/5/feed
+3. http://rss.cnn.com/rss/edition_world.rss
+4. https://globalnews.ca/feed/
+5. https://www.washingtontimes.com/rss/headlines/news/world/

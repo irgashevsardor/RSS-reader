@@ -69,10 +69,10 @@ class Converter:
         os.makedirs(os.path.dirname(file_), exist_ok=True)
         if filetype == 'pdf':
             with open(file_, 'w+b') as file:
-                logger.debug(f"Creating PDF file...")
+                print('Creating PDF file...')
                 logging.disable(logging.DEBUG)
                 pisa.CreatePDF(self._html_content, dest=file)
         elif filetype == 'html':
             with open(file_, 'w') as file:
-                logger.debug(f"Creating HTML file...")
+                print('Creating HTML file...')
                 file.write(self._html_content)
