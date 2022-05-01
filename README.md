@@ -160,7 +160,7 @@ Creates both HTML and PDF files at the specified location
 #### Alternatives with installation from PyPI
 
 ```
-> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1
 ```
 
 ```shell
@@ -176,7 +176,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --limit 1 --json
 ```
 
 ```shell
@@ -196,7 +196,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1
 ```
 
 ```shell
@@ -212,7 +212,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> rss_reader.py http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1 --json
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --date 20220428 --limit 1 --json
 ```
 
 ```shell
@@ -232,7 +232,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> rss_reader.py --date 20220428 --limit 1
+> rss_reader --date 20220428 --limit 1
 ```
 
 ```shell
@@ -248,7 +248,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> rss_reader.py --date 20220428 --json --limit 1
+> rss_reader --date 20220428 --json --limit 1
 ```
 
 ```shell
