@@ -72,7 +72,9 @@ class Converter:
                 print('Creating PDF file...')
                 logging.disable(logging.DEBUG)
                 pisa.CreatePDF(self._html_content, dest=file)
+                print(f'PDF file created at {file_}')
         elif filetype == 'html':
             with open(file_, 'w') as file:
                 print('Creating HTML file...')
                 file.write(self._html_content)
+                print(f'HTML file created at {file_}')

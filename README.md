@@ -39,8 +39,6 @@ optional arguments:
   --to-pdf PDF   Convert news to PDF
 ```
 
-!!! PDF file generation may take little time
-
 ## Usage Examples
 
 ```
@@ -152,7 +150,7 @@ optional arguments:
 ```
 
 ```
-> python3 rss_reader.py https://moxie.foxnews.com/feedburner/latest.xml --to-pdf ./ --to-html ./
+> python3 rss_reader.py http://rss.cnn.com/rss/edition_world.rss --to-pdf ./ --to-html ./
 ```
 
 ```shell
@@ -270,7 +268,7 @@ Creates both HTML and PDF files at the specified location
 ```
 
 ```
-> python3 rss_reader.py https://moxie.foxnews.com/feedburner/latest.xml --to-pdf ./ --to-html ./
+> rss_reader http://rss.cnn.com/rss/edition_world.rss --to-pdf ./ --to-html ./
 ```
 
 ```shell
